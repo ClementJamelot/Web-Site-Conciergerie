@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <style>
+      /* Styles pour le header */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background-color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      /* Styles pour la barre de gauche */
+      .sidebar {
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        width: 20%;
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+      }
+      /* Styles pour le formulaire */
+      form {
+        margin: 50px auto;
+        width: 80%;
+        text-align: center;
+      }
+      /* Styles pour les boutons */
+      button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" alt="Logo" style="height: 40px;">
+      <div>
+        <button>Bouton 1</button>
+        <button>Bouton 2</button>
+      </div>
+    </header>
+    <div class="sidebar">
+      Barre de gauche
+    </div>
+    <form>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+        <br><br>
+        <label for="prenom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <br><br>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" required>
+        <br><br>
+        <label for="telephone">Telephone :</label>
+        <input type="tel" id="telephone" name="telephone" required>
+        <br><br>
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" required>
+        <br><br>
+        <button type="submit">Enregistrer</button>
+        <button type="reset">Annuler</button>
+      </form>
+      
