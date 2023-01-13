@@ -61,16 +61,53 @@
       to {opacity:1 ;}
     }
   </style>
+
+  <link rel="stylesheet" href="stylePopup.css"></link>
 </head>
 <body>
 
   <h2>Popup</h2>
   <p>Click on the button to show the popup:</p>
 
-  <div class="popup" onclick="showPopup()">
-    <button>Open Popup</button>
-    <span class="popuptext" id="myPopup">Hello, I'm a popup!</span>
+  <button id="btnPopup" class="btnPopup">Open Popup</button>
+
+  <div id ="overlay" class="overlay">
+    <div id="popup" class="'popup">
+      <h2>
+        Ajouter un client
+        <span id="btnClose" class="btnClose">&times;</span>
+      </h2>
+
+      <form>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+        <br><br>
+        <label for="prenom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <br><br>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" required>
+        <br><br>
+        <label for="telephone">Telephone :</label>
+        <input type="tel" id="telephone" name="telephone" required>
+        <br><br>
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" required>
+        <br><br>
+        <button type="submit">Enregistrer</button>
+        <button type="reset">Annuler</button>
+      </form>
+
+    </div>
   </div>
+
+  <script src="scriptPopup.js"></script>
 
 </body>
 </html>
