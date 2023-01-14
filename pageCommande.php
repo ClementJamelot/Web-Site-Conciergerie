@@ -59,7 +59,63 @@
 
     <div class="contenu">
       <h2>Listes des commandes</h2>
-      <table>
+      <table class="tableau">
+        <thead>
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>
+              Nom client
+            </th>
+            <th>
+              Date de commande
+            </th>
+            <th>
+              Statut
+            </th>
+            <th>
+              Prix total
+            </th>
+            <th>
+              Plus d'info
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <?php
+          mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+          $mysqli = new mysqli("localhost", "root", "", "madeth");
+
+          $listCommande = $mysqli->query("SELECT * FROM commande");
+
+          while($commande = mysqli_fetch_assoc($listCommande)){?>
+            <tr>
+              <td>
+                <?php echo $commande['id_commande'];?>
+              </td>
+              <td>
+                <?php /*nom du client ici */?>
+              </td>
+              <td>
+                <?php echo $commande['date_commande'];?>
+              </td>
+              <td>
+                <?php echo $commande['status_commande'];?>
+              </td>
+              <td>
+                <?php /*prix total*/ ?>
+              </td>
+              <td>
+                Plus d'infos
+              </td>
+            </tr> <?php
+          }
+
+          ?>
+
+        </tbody>
 
       </table>
 
