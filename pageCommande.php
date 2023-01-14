@@ -1,5 +1,7 @@
 <html>
   <head>
+    <meta charset="utf-8">
+    
     <style>
       /* Styles pour le header */
       header {
@@ -43,51 +45,24 @@
 
     <link rel="stylesheet" href="stylePageclient.css"></link>
   </head>
-
   <body>
     <header>
       <img src="logo.png" alt="Logo" style="height: 120px">
       <div>
-        <button id="btnClient" class="btnClient" onclick="window.location='pageClient.html';">Bouton client</button>
-        <button id="btnCommande" class="btnCommande" onclick="window.location='pageCommande.html';">Bouton commande</button>
+        <button id="btnClient" class="btnClient" onclick="window.location='pageClient.php';">Bouton client</button>
+        <button id="btnCommande" class="btnCommande" onclick="window.location='pageCommande.php';">Bouton commande</button>
       </div>
     </header>
     <div class="sidebar">
       Barre de gauche
     </div>
+
     <div class="contenu">
-      <h2>Liste des clients</h2>
-      <table class="tableau">
-        <thead>
-          <tr>
-            <th>
-              Nom
-            </th>
-            <th>
-              Prénom
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              Michel
-            </td>
-            <td>
-              Jean
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Jean
-            </td>
-            <td>
-              Mcihel
-            </td>
-          </tr>
-        </tbody>
+      <h2>Listes des commandes</h2>
+      <table>
 
       </table>
+
     </div>
   </body>
 
