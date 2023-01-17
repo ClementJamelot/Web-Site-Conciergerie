@@ -106,24 +106,30 @@
               </td>
               <td>
                 
-                <?php /*
+                <?php 
                 if($client['ultimate'] == 1){
-                  echo "ultimate";
+                  $member = "Ultimate";
                 }
                 elseif($points = $client['total_point']<700){
-                  $member = $mysqli->query("SELECT type_member FROM membership WHERE $points BETWEEN min_point AND max_point");
-                  echo $member['type_member'][1];
+                  
+                  $mem = $mysqli->query("SELECT type_member FROM membership WHERE " . $points. " BETWEEN min_point AND max_point"); /*$points BETWEEN min_point AND max_point*/
+                  $mem2 = mysqli_fetch_row($mem);
+                  $member = $mem2[0];
+                  
                 }
                 else{
-                  $member = $mysqli->query("SELECT type_member FROM membership WHERE id_membership = 3");
-                  echo $member['type_member'];
-                }*/
+                  $mem = $mysqli->query("SELECT type_member FROM membership WHERE min_point >= 700");
+                  $mem2 = mysqli_fetch_row($mem);
+                  $member = $mem2[0];
+                }
+                echo $member;
                 ?>
               </td>
               <td>
-                <?php /*
-                  $nbPoint = $mysqli->query("SELECT SUM(nb_point) FROM `point` WHERE id_client = 1 AND `expety_date`>= CURRENT_DATE");
-                  echo $nbPoint['SUM(nb_point)'];*/
+                <?php 
+                  $nbPoint = $mysqli->query("SELECT SUM(nb_point) FROM `point` WHERE id_client = " . $client['id_client'] . " AND `expery_date`>= CURRENT_DATE");
+                  $nb = mysqli_fetch_row($nbPoint);
+                  echo $nb[0];
                 ?>
               </td>
               <td>

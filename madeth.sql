@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 13 jan. 2023 à 10:14
+-- Généré le : mar. 17 jan. 2023 à 17:51
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -31,6 +31,7 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
   `id_client` int NOT NULL AUTO_INCREMENT,
   `name_client` varchar(50) DEFAULT NULL,
+  `address_client` varchar(100) NOT NULL,
   `facebook` varchar(50) DEFAULT NULL,
   `instagram` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -38,7 +39,16 @@ CREATE TABLE IF NOT EXISTS `client` (
   `total_point` int DEFAULT NULL,
   `ultimate` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_client`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `client`
+--
+
+INSERT INTO `client` (`id_client`, `name_client`, `address_client`, `facebook`, `instagram`, `email`, `tel`, `total_point`, `ultimate`) VALUES
+(1, 'jean michel', '1 rue de la bdd', NULL, '6+5', 'jm@mail.com', '4586957845', 100, 0),
+(2, 'clément jamelot', 'rue du pouet', NULL, NULL, 'cjj@mail.fr', NULL, 500, 1),
+(3, 'zeiof', 'fdhyht', NULL, NULL, NULL, NULL, 800, 0);
 
 -- --------------------------------------------------------
 
@@ -49,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` int NOT NULL AUTO_INCREMENT,
-  `date_commande` date DEFAULT NULL,
+  `date_commande` datetime DEFAULT CURRENT_TIMESTAMP,
   `delevery_fee` int DEFAULT NULL,
   `status_commande` varchar(50) DEFAULT NULL,
   `date_delevery` date DEFAULT NULL,
@@ -59,7 +69,14 @@ CREATE TABLE IF NOT EXISTS `commande` (
   PRIMARY KEY (`id_commande`),
   KEY `id_consierge` (`id_consierge`),
   KEY `id_client` (`id_client`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id_commande`, `date_commande`, `delevery_fee`, `status_commande`, `date_delevery`, `date_send`, `id_consierge`, `id_client`) VALUES
+(1, '2023-01-17 15:33:56', NULL, NULL, NULL, NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -88,7 +105,14 @@ CREATE TABLE IF NOT EXISTS `concierge` (
   `id_concierge` int NOT NULL AUTO_INCREMENT,
   `nom_concierge` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_concierge`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `concierge`
+--
+
+INSERT INTO `concierge` (`id_concierge`, `nom_concierge`) VALUES
+(1, 'con1');
 
 -- --------------------------------------------------------
 
@@ -109,7 +133,15 @@ CREATE TABLE IF NOT EXISTS `contains` (
   KEY `id_commande` (`id_commande`),
   KEY `id_stock` (`id_stock`),
   KEY `id_direct` (`id_direct`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `contains`
+--
+
+INSERT INTO `contains` (`id_contains`, `quantity_contains`, `unit_price`, `service_charge`, `id_commande`, `id_stock`, `id_direct`) VALUES
+(1, 2, 15, NULL, 1, NULL, 1),
+(2, 1, 2, NULL, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -172,7 +204,16 @@ CREATE TABLE IF NOT EXISTS `membership` (
   `max_point` int DEFAULT NULL,
   `type_member` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_membership`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `membership`
+--
+
+INSERT INTO `membership` (`id_membership`, `min_point`, `max_point`, `type_member`) VALUES
+(1, 0, 300, 'Silver'),
+(2, 300, 700, 'Gold'),
+(3, 700, NULL, 'Platinium');
 
 -- --------------------------------------------------------
 
@@ -201,11 +242,18 @@ DROP TABLE IF EXISTS `point`;
 CREATE TABLE IF NOT EXISTS `point` (
   `id_point` int NOT NULL AUTO_INCREMENT,
   `nb_point` int DEFAULT NULL,
-  `expety_date` date DEFAULT NULL,
+  `expery_date` date DEFAULT NULL,
   `id_client` int DEFAULT NULL,
   PRIMARY KEY (`id_point`),
   KEY `id_client` (`id_client`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `point`
+--
+
+INSERT INTO `point` (`id_point`, `nb_point`, `expery_date`, `id_client`) VALUES
+(1, 50, '2023-06-23', 2);
 
 -- --------------------------------------------------------
 

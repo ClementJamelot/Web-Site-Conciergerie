@@ -96,7 +96,11 @@
                 <?php echo $commande['id_commande'];?>
               </td>
               <td>
-                <?php /*nom du client ici */?>
+                <?php 
+                $cli = $mysqli->query("SELECT name_client FROM client WHERE id_client = " . $commande['id_client']);
+                $client = mysqli_fetch_row($cli);
+                echo $client[0];
+                ?>
               </td>
               <td>
                 <?php echo $commande['date_commande'];?>
@@ -105,7 +109,18 @@
                 <?php echo $commande['status_commande'];?>
               </td>
               <td>
-                <?php /*prix total*/ ?>
+                <?php 
+                $itemlist = $mysqli->query("SELECT quantity_contains, unit_price FROM contains WHERE id_commande = " . $commande['id_commande']);
+
+                $tot = 0;
+
+                while($item = mysqli_fetch_assoc($itemlist)){
+                  $tot = $tot + $item['quantity_contains'] * $item['unit_price'];
+                }
+
+                echo $tot;
+
+                ?>
               </td>
               <td>
                 Plus d'infos
