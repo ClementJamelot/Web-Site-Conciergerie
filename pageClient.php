@@ -111,11 +111,16 @@
                   $member = "Ultimate";
                 }
                 elseif($points = $client['total_point']<700){
+<<<<<<< Updated upstream
                   
                   $mem = $mysqli->query("SELECT type_member FROM membership WHERE " . $points. " BETWEEN min_point AND max_point"); /*$points BETWEEN min_point AND max_point*/
                   $mem2 = mysqli_fetch_row($mem);
                   $member = $mem2[0];
                   
+=======
+                  $member = $mysqli->query("SELECT type_member FROM membership WHERE ".$points." BETWEEN min_point AND max_point");
+                  echo $member['type_member'];
+>>>>>>> Stashed changes
                 }
                 else{
                   $mem = $mysqli->query("SELECT type_member FROM membership WHERE min_point >= 700");
@@ -127,9 +132,14 @@
               </td>
               <td>
                 <?php 
+<<<<<<< Updated upstream
                   $nbPoint = $mysqli->query("SELECT SUM(nb_point) FROM `point` WHERE id_client = " . $client['id_client'] . " AND `expery_date`>= CURRENT_DATE");
                   $nb = mysqli_fetch_row($nbPoint);
                   echo $nb[0];
+=======
+                  $nbPoint = $mysqli->query("SELECT SUM(nb_point) FROM `point` WHERE id_client = " . $client['id-client'] . " AND `expety_date`>= CURRENT_DATE");
+                  echo $nbPoint['SUM(nb_point)'];
+>>>>>>> Stashed changes
                 ?>
               </td>
               <td>
