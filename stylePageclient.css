@@ -8,3 +8,32 @@
     border: 2px solid;
     border-color: gray;
 }
+
+.btnPopup{
+    background-color: white;
+    cursor: pointer;
+}
+
+.btnPopup:hover{
+    background-color: lightgrey;
+}
+
+.overlay{
+    position:fixed;
+    left: 30%;
+    top: 150px;
+    background-color: lightgray;
+    width: 80%;
+    display: none;
+}
+
+
+.popup{
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btnClose{
+    float: right;
+    cursor: pointer;
+}
