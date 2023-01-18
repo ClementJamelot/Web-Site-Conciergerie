@@ -191,6 +191,42 @@
         </tbody>
 
       </table>
+
+      <div id ="overlay" class="overlay" style="display:none">
+        <div id="myPopup" class="'popup"  >
+          <h2>
+            Ajouter un client
+            <span id="btnClose" class="btnClose" onclick="closeModal()">&times;</span>
+          </h2>
+
+          <form action="PHP_MISE_A_JOUR_COMPTE.php" method="post">
+            <label for="name_client">Nom :</label>
+            <input type="text" id="name_client" name="name_client" required>
+            <br><br>
+
+            <label for="facebook">facebook :</label>
+            <input type="text" id="facebook" name="facebook" required>
+            <br><br>
+
+            <label for="instagram">instagram :</label>
+            <input type="text" id="instagram" name="instagram" required>
+            <br><br>
+
+            <label for="email">email :</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <label for="tel">tel :</label>
+            <input type="text" id="tel" name="tel" required>
+            <br><br>
+            <input type="text" id="id_client" name="id_client" required style="visibility:hidden">
+            <button type="submit">Enregistrer</button>
+            <button type="reset">Annuler</button>
+          </form>
+
+        </div>
+      </div>
+
     </div>
   </body>
 
