@@ -161,8 +161,7 @@
 </div>
 <div class="contenu">
   <h2>Liste des clients</h2>
-<table id="dataTable" class="tableau" style="margin-left: 300px;
-margin-top: 150px;" >
+<table id="dataTable" class="tableau" style="margin-left: 300px;margin-top: 150px; z-index: index 1;" >
 <tr>
     <th>ID</th>
     <th>Nom</th>
@@ -212,7 +211,7 @@ margin-top: 150px;" >
 </div>
 <button id="btnPopup" class="btnPopup" onclick="openModal1()">Open Popup</button>
 
-<div id ="overlay" class="overlay" style="display:none">
+<div id ="overlay" class="overlay" style="display:none; z-index: index 6;">
   <div id="myPopup" class="'popup"  >
     <h2>
       Ajouter un client
@@ -247,7 +246,7 @@ margin-top: 150px;" >
   </div>
 </div>
 
-<div id ="overlay1" class="overlay" style="display:none">
+<div id ="overlay1" class="overlay" style="display:none; z-index: index 6;">
   <div id="myPopup" class="'popup"  >
     <h2>
       Ajouter un client
