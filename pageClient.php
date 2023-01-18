@@ -1,48 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-
-    <script>
-      var ascending = true;
-      var sortBy = "nom";
-
-      function sortTable(sort) {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("dataTable");
-        switching = true;
-
-        while (switching) {
-          switching = false;
-          rows = table.rows;
-
-          for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[sort];
-            y = rows[i + 1].getElementsByTagName("TD")[sort];
-
-            if (ascending) {
-              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
-              }
-            } else {
-              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
-              }
-            }
-          }
-          if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-          }
-        }
-        ascending = !ascending;
-        sortBy = sort;
-      }
-
-    </script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
       /* Styles pour le header */
       header {
@@ -96,15 +55,11 @@
       </div>
     </header>
     <div class="sidebar">
-      Trier par :
-      <button onclick="sortTable(1)">Nom</button>
-      <button onclick="sortTable(2)">Ville</button>
-      <button onclick="sortTable(3)">Code Postal</button>
-      <button onclick="sortTable(4)">Abonnement</button>
+      Barre de gauche
     </div>
     <div class="contenu">
       <h2>Liste des clients</h2>
-      <table class="tableau" id="dataTable">
+      <table class="tableau">
         <thead>
           <tr>
             <th>
@@ -134,7 +89,7 @@
 
           <?php
           mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-          $mysqli = new mysqli("localhost", "root", "", "madeth");
+          $mysqli = new mysqli("localhost", "root", "root", "madeth");
 
           $listClient = $mysqli->query("SELECT * FROM client");
 
@@ -181,7 +136,7 @@
                 <?php echo $client['tel'];?>
               </td>
               <td>
-              <button id="loadData" onclick=<?php echo "\"myFunction(" . $client['id_client'] . ")\"" ?>>Plus d'infos</button>
+                <?php echo "<button id=\"loadData\" onclick=\"myFunction(".$client["id_client"].")\">Load Data</button>";?>
               </td>
             </tr> <?php
           }
@@ -192,132 +147,132 @@
 
       </table>
 
-      <button id="btnPopup" class="btnPopup" onclick="openModal1()">Open Popup</button>
-
-      <div id ="overlay" class="overlay" style="display:none">
-        <div id="myPopup" class="'popup"  >
-          <h2>
-            Fiche du client
-            <span id="btnClose" class="btnClose" onclick="closeModal()">&times;</span>
-          </h2>
-
-          <form action="PHP_MISE_A_JOUR_COMPTE.php" method="post">
-            <label for="name_client">Nom :</label>
-            <input type="text" id="name_client" name="name_client" required>
-            <br><br>
-
-            <label for="facebook">facebook :</label>
-            <input type="text" id="facebook" name="facebook" required>
-            <br><br>
-
-            <label for="instagram">instagram :</label>
-            <input type="text" id="instagram" name="instagram" required>
-            <br><br>
-
-            <label for="email">email :</label>
-            <input type="email" id="email" name="email" required>
-            <br><br>
-
-            <label for="tel">tel :</label>
-            <input type="text" id="tel" name="tel" required>
-            <br><br>
-            <input type="text" id="id_client" name="id_client" required style="visibility:hidden">
-            <button type="submit">Enregistrer</button>
-            <button type="reset">Annuler</button>
-          </form>
-
-        </div>
-      </div>
-
-      <div id ="overlay1" class="overlay" style="display:none">
-        <div id="myPopup" class="'popup"  >
-          <h2>
-            Ajouter un client
-            <span id="btnClose" class="btnClose" onclick="closeModal()">&times;</span>
-          </h2>
-
-          <form action="PHP_CREATION_COMPTE.php" method="post">
-            <label for="name_client">Nom :</label>
-            <input type="text" id="name_client1" name="name_client" required>
-            <br><br>
-
-            <label for="facebook">facebook :</label>
-            <input type="text" id="facebook1" name="facebook" required>
-            <br><br>
-
-            <label for="instagram">instagram :</label>
-            <input type="text" id="instagram1" name="instagram" required>
-            <br><br>
-
-            <label for="email">email :</label>
-            <input type="email" id="email1" name="email" required>
-            <br><br>
-
-            <label for="tel">tel :</label>
-            <input type="text" id="tel1" name="tel" required>
-            <br><br>
-
-            <button type="submit">Enregistrer</button>
-            <button type="reset">Annuler</button>
-          </form>
-
-        </div>
-      </div>
-
     </div>
-  </body>
 
+    <button id="btnPopup" class="btnPopup" onclick="openModal1()" style="margin-top: 500px;margin-left: 500px;">Open Popup</button>
+    <div id ="overlay" class="overlay" style="display:none;background-color: brown;z-index: index 6;position: fixed;margin-top: -400px;
+margin-left: 250px;">
+    <div id="myPopup" class="'popup"  >
+    <h2>
+      Ajouter un client
+      <span id="btnClose" class="btnClose" onclick="closeModal()" style="margin-top: 500px;margin-left: 500px;">&times;</span>
+    </h2>
+
+    <form action="PHP_MISE_A_JOUR_COMPTE.php" method="post">
+      <label for="name_client">Nom :</label>
+      <input type="text" id="name_client" name="name_client" required>
+      <br><br>
+
+      <label for="facebook">facebook :</label>
+      <input type="text" id="facebook" name="facebook" required>
+      <br><br>
+
+      <label for="instagram">instagram :</label>
+      <input type="text" id="instagram" name="instagram" required>
+      <br><br>
+
+      <label for="email">email :</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+
+      <label for="tel">tel :</label>
+      <input type="text" id="tel" name="tel" required>
+      <br><br>
+      <input type="text" id="id_client" name="id_client" required style="visibility:hidden">
+      <button type="submit">Enregistrer</button>
+      <button type="reset">Annuler</button>
+    </form>
+
+  </div>
+  </div>
+
+
+<div id ="overlay1" class="overlay" style="display:none;background-color: brown;z-index: index 6;position: fixed;margin-top: -400px;
+margin-left: 250px;">
+  <div id="myPopup" class="'popup"  >
+    <h2>
+      Ajouter un client
+      <span id="btnClose" class="btnClose" onclick="closeModal()" style="margin-top: 500px;margin-left: 500px;">&times;</span>
+    </h2>
+
+    <form action="PHP_CREATION_COMPTE.php" method="post">
+      <label for="name_client">Nom :</label>
+      <input type="text" id="name_client1" name="name_client" required>
+      <br><br>
+
+      <label for="facebook">facebook :</label>
+      <input type="text" id="facebook1" name="facebook" required>
+      <br><br>
+
+      <label for="instagram">instagram :</label>
+      <input type="text" id="instagram1" name="instagram" required>
+      <br><br>
+
+      <label for="email">email :</label>
+      <input type="email" id="email1" name="email" required>
+      <br><br>
+
+      <label for="tel">tel :</label>
+      <input type="text" id="tel1" name="tel" required>
+      <br><br>
+
+      <button type="submit">Enregistrer</button>
+      <button type="reset">Annuler</button>
+    </form>
+
+  </div>
+</div>
 <script>
-  var btnPopup = document.getElementById('btnPopup');
-  var overlay1 = document.getElementById('overlay1');
-  var overlay = document.getElementById('overlay');
-  var btnClose = document.getElementById('btnClose');
-  var popup = document.getElementById("myPopup");
-  popup.style.visibility("hidden");
+        var btnPopup = document.getElementById('btnPopup');
+      var overlay1 = document.getElementById('overlay1');
+      var overlay = document.getElementById('overlay');
+      var btnClose = document.getElementById('btnClose');
+      var popup = document.getElementById("myPopup");
+      popup.style.visibility("hidden");
 
-  btnPopup.addEventListener('click', openModal);
-  btnClose.addEventListener('click', closeModal);
+      btnPopup.addEventListener('click', openModal);
+      btnClose.addEventListener('click', closeModal);
 
-  function showPopup() {
-    var popup = document.getElementById("myPopup");
-    popup.style.visibility("visible");
-  }
+   
 
-  function openModal1(){
-    overlay1.style.display = 'block';
-  }
-  function openModal(){
-    overlay.style.display = 'block';
-  }
-
-  function closeModal(){
-    overlay1.style.display = 'none';
-    overlay.style.display = 'none';
-  }
-</script>
-<script>
-
-
-  function myFunction(id){
-    openModal();
-    $.ajax({
-      type: "POST",
-      url: "load_data.php",
-      data: {param1 : id, param2 : "value2"},
-      success: function(data){
-        console.log(data);
-        var data = JSON.parse(data);
-        console.log(data[0].email);
-        document.getElementById("name_client").value = data[0].name_client;
-        document.getElementById("email").value = data[0].email;
-        document.getElementById("tel").value = data[0].tel;
-        document.getElementById("id_client").value = data[0].id_client;
+      function openModal1(){
+      overlay1.style.display = 'block';
       }
-    });
-  };
+      function openModal(){
+      overlay.style.display = 'block';
+      }
+
+      function closeModal(){
+      overlay1.style.display = 'none';
+      overlay.style.display = 'none';
+      }
+  </script>
+  <script>
+    
+
+      function myFunction(id){
+        openModal();
+            $.ajax({
+                type: "POST",
+                url: "load_data.php",
+                data: {param1 : id, param2 : "value2"},
+                success: function(data){
+                    console.log(data);
+                    var data = JSON.parse(data);
+                    console.log(data[0].email);
+                    document.getElementById("name_client").value = data[0].name_client;
+                    document.getElementById("email").value = data[0].email;
+                    document.getElementById("tel").value = data[0].tel;
+                    document.getElementById("id_client").value = data[0].id_client;
+                }
+            });
+        };
     
     
     
 </script>
+
+
+  </body>
 
       
