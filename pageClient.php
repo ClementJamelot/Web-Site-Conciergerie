@@ -181,7 +181,7 @@
                 <?php echo $client['tel'];?>
               </td>
               <td>
-                Plus d'infos
+              <button id="loadData" onclick=<?php echo "\"myFunction(" . $client['id_client'] . ")\"" ?>>Plus d'infos</button>
               </td>
             </tr> <?php
           }
@@ -192,10 +192,12 @@
 
       </table>
 
+      <button id="btnPopup" class="btnPopup" onclick="openModal1()">Open Popup</button>
+
       <div id ="overlay" class="overlay" style="display:none">
         <div id="myPopup" class="'popup"  >
           <h2>
-            Ajouter un client
+            Fiche du client
             <span id="btnClose" class="btnClose" onclick="closeModal()">&times;</span>
           </h2>
 
@@ -227,7 +229,95 @@
         </div>
       </div>
 
+      <div id ="overlay1" class="overlay" style="display:none">
+        <div id="myPopup" class="'popup"  >
+          <h2>
+            Ajouter un client
+            <span id="btnClose" class="btnClose" onclick="closeModal()">&times;</span>
+          </h2>
+
+          <form action="PHP_CREATION_COMPTE.php" method="post">
+            <label for="name_client">Nom :</label>
+            <input type="text" id="name_client1" name="name_client" required>
+            <br><br>
+
+            <label for="facebook">facebook :</label>
+            <input type="text" id="facebook1" name="facebook" required>
+            <br><br>
+
+            <label for="instagram">instagram :</label>
+            <input type="text" id="instagram1" name="instagram" required>
+            <br><br>
+
+            <label for="email">email :</label>
+            <input type="email" id="email1" name="email" required>
+            <br><br>
+
+            <label for="tel">tel :</label>
+            <input type="text" id="tel1" name="tel" required>
+            <br><br>
+
+            <button type="submit">Enregistrer</button>
+            <button type="reset">Annuler</button>
+          </form>
+
+        </div>
+      </div>
+
     </div>
   </body>
+
+<script>
+  var btnPopup = document.getElementById('btnPopup');
+  var overlay1 = document.getElementById('overlay1');
+  var overlay = document.getElementById('overlay');
+  var btnClose = document.getElementById('btnClose');
+  var popup = document.getElementById("myPopup");
+  popup.style.visibility("hidden");
+
+  btnPopup.addEventListener('click', openModal);
+  btnClose.addEventListener('click', closeModal);
+
+  function showPopup() {
+    var popup = document.getElementById("myPopup");
+    popup.style.visibility("visible");
+  }
+
+  function openModal1(){
+    overlay1.style.display = 'block';
+  }
+  function openModal(){
+    overlay.style.display = 'block';
+  }
+
+  function closeModal(){
+    overlay1.style.display = 'none';
+    overlay.style.display = 'none';
+  }
+</script>
+<script>
+
+
+  function myFunction(id){
+    openModal();
+    $.ajax({
+      type: "POST",
+      url: "load_data.php",
+      data: {param1 : id, param2 : "value2"},
+      success: function(data){
+        console.log(data);
+        var data = JSON.parse(data);
+        console.log(data[0].email);
+        document.getElementById("name_client").value = data[0].name_client;
+        document.getElementById("email").value = data[0].email;
+        document.getElementById("tel").value = data[0].tel;
+        document.getElementById("id_client").value = data[0].id_client;
+      }
+    });
+  };
+    
+    
+    
+</script>
 
       
