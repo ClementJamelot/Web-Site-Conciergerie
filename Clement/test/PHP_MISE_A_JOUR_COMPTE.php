@@ -27,7 +27,7 @@ $sql="UPDATE client SET name_client = '$name_client', facebook = '$facebook', in
 
 if (mysqli_query($conn, $sql)) {
     echo "Record updated successfully";
-    header("Location: a finir.php");
+    header("Location: pageClient.php");
     
 } else {
     echo "Error updating record: " . mysqli_error($conn);
