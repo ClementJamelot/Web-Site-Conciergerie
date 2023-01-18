@@ -2,6 +2,47 @@
   <head>
     <meta charset="utf-8">
 
+    <script>
+      var ascending = true;
+      var sortBy = "nom";
+
+      function sortTable(sort) {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("dataTable");
+        switching = true;
+
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[sort];
+            y = rows[i + 1].getElementsByTagName("TD")[sort];
+
+            if (ascending) {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            } else {
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+        ascending = !ascending;
+        sortBy = sort;
+      }
+
+    </script>
+
     <style>
       /* Styles pour le header */
       header {
@@ -55,11 +96,15 @@
       </div>
     </header>
     <div class="sidebar">
-      Barre de gauche
+      Trier par :
+      <button onclick="sortTable(1)">Nom</button>
+      <button onclick="sortTable(2)">Ville</button>
+      <button onclick="sortTable(3)">Code Postal</button>
+      <button onclick="sortTable(4)">Abonnement</button>
     </div>
     <div class="contenu">
       <h2>Liste des clients</h2>
-      <table class="tableau">
+      <table class="tableau" id="dataTable">
         <thead>
           <tr>
             <th>
@@ -146,6 +191,42 @@
         </tbody>
 
       </table>
+
+      <div id ="overlay" class="overlay" style="display:none">
+        <div id="myPopup" class="'popup"  >
+          <h2>
+            Ajouter un client
+            <span id="btnClose" class="btnClose" onclick="closeModal()">&times;</span>
+          </h2>
+
+          <form action="PHP_MISE_A_JOUR_COMPTE.php" method="post">
+            <label for="name_client">Nom :</label>
+            <input type="text" id="name_client" name="name_client" required>
+            <br><br>
+
+            <label for="facebook">facebook :</label>
+            <input type="text" id="facebook" name="facebook" required>
+            <br><br>
+
+            <label for="instagram">instagram :</label>
+            <input type="text" id="instagram" name="instagram" required>
+            <br><br>
+
+            <label for="email">email :</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <label for="tel">tel :</label>
+            <input type="text" id="tel" name="tel" required>
+            <br><br>
+            <input type="text" id="id_client" name="id_client" required style="visibility:hidden">
+            <button type="submit">Enregistrer</button>
+            <button type="reset">Annuler</button>
+          </form>
+
+        </div>
+      </div>
+
     </div>
   </body>
 
