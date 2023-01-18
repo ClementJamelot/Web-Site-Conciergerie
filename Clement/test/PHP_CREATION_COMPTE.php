@@ -26,7 +26,7 @@ $stmt->bind_param("ssssi", $name_client, $facebook,$instagram,$email,$tel);
 
 if ($stmt->execute() === TRUE) {
     echo "New record created successfully";
-    header("Location: a finir.php");
+    header("Location: pageClient.php");
 } else {
     echo "Error: " . $conn->error;
 }

@@ -1,0 +1,115 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Popup Example</title>
+  <script>
+    function showPopup() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+  </script>
+  <style>
+    /* Popup container */
+    .popup {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    /* The actual popup */
+    .popup .popuptext {
+      visibility: hidden;
+      width: 160px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -80px;
+    }
+
+    /* Popup arrow */
+    .popup .popuptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+
+    /* Toggle this class when clicking on the popup container (hide and show the popup) */
+    .popup .show {
+      visibility: visible;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s;
+    }
+
+    /* Add animation (fade in the popup) */
+    @-webkit-keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity:1 ;}
+    }
+  </style>
+
+  <link rel="stylesheet" href="stylePopup.css"></link>
+</head>
+<body>
+
+  <h2>Popup</h2>
+  <p>Click on the button to show the popup:</p>
+
+  <button id="btnPopup" class="btnPopup">Open Popup</button>
+
+  <div id ="overlay" class="overlay">
+    <div id="popup" class="'popup">
+      <h2>
+        Ajouter un client
+        <span id="btnClose" class="btnClose">&times;</span>
+      </h2>
+
+      <form>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+        <br><br>
+        <label for="prenom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <br><br>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" required>
+        <br><br>
+        <label for="telephone">Telephone :</label>
+        <input type="tel" id="telephone" name="telephone" required>
+        <br><br>
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" required>
+        <br><br>
+        <button type="submit">Enregistrer</button>
+        <button type="reset">Annuler</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="scriptPopup.js"></script>
+
+</body>
+</html>
