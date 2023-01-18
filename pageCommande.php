@@ -73,6 +73,8 @@ else{
     </header>
     <div class="sidebar">
       Barre de gauche
+      Ajouter la génération de facture
+      Exporter la liste des commandes
     </div>
 
     <div class="contenu">
