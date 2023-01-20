@@ -89,7 +89,7 @@
 
           <?php
           mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-          $mysqli = new mysqli("localhost", "root", "", "madeth");
+          $mysqli = new mysqli("localhost", "root", "root", "madeth");
 
           $listClient = $mysqli->query("SELECT * FROM client");
 
@@ -147,6 +147,11 @@
 
       </table>
     </div>
+  
+  
+
+
+
   </body>
 
       
