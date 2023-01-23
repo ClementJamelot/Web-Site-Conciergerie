@@ -142,7 +142,7 @@ else{
                                     ?>
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="valide" /><br />
+                                    <input type="checkbox" name="valide" value=<?php echo "'" + $resultat['id_commande'] + "'" ?>/><br />
                                     <?php /*btn ajouter à la facture genre un truc coché*/ ?>
                                 </td>
                             </tr> <?php
@@ -174,7 +174,23 @@ else{
     btnGenerer.addEventListener('click', printFacture);
 
     function printFacture(){
-      
+      $id[];
+
+      foreach($valide as $valeur){
+        $id = $id + [$valeur];
+      }
+
+      $val = $mysqli->query("SELECT * FROM commande WHERE id_commande IN " . $id);
+
+      $fichier = fopen("facture.txt");
+
+      foreach($val as $ligne){
+        fwrite($fichier, $ligne);
+      }
+
+      $fichier.fclose();
+
+
     }
     
 </script>
