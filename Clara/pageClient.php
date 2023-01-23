@@ -150,8 +150,7 @@
     </div>
 
     <button id="btnPopup" class="btnPopup" onclick="openModal1()" style="margin-top: 500px;margin-left: 500px;">Open Popup</button>
-    <div id ="overlay" class="overlay" style="display:none;background-color: brown;z-index: index 6;position: fixed;margin-top: -400px;
-margin-left: 250px;">
+    <div id ="overlay" class="overlay">
     <div id="myPopup" class="'popup"  >
     <h2>
       Ajouter un client
@@ -187,8 +186,7 @@ margin-left: 250px;">
   </div>
 
 
-<div id ="overlay1" class="overlay" style="display:none;background-color: brown;z-index: index 6;position: fixed;margin-top: -400px;
-margin-left: 250px;">
+<div id ="overlay1" class="overlay">
   <div id="myPopup" class="'popup"  >
     <h2>
       Ajouter un client
@@ -223,7 +221,7 @@ margin-left: 250px;">
   </div>
 </div>
 <script>
-        var btnPopup = document.getElementById('btnPopup');
+      var btnPopup = document.getElementById('btnPopup');
       var overlay1 = document.getElementById('overlay1');
       var overlay = document.getElementById('overlay');
       var btnClose = document.getElementById('btnClose');
