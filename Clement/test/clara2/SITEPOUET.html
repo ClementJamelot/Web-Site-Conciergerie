@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      /* Styles pour le header */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background-color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      /* Styles pour la barre de gauche */
+      .sidebar {
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        width: 20%;
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+      }
+      /* Styles pour le formulaire */
+      form {
+        margin: 50px auto;
+        width: 80%;
+        text-align: center;
+      }
+      /* Styles pour les boutons */
+      button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" alt="Logo" style="height: 40px;">
+      <div>
+        <button>Bouton 1</button>
+        <button>Bouton 2</button>
+      </div>
+    </header>
+    <div class="sidebar">
+      Barre de gauche
+    </div>
+    <form action="submit.php" method="post">
+        <div class="container">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+    
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+    
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+    
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required>
+    
+          <label for="phone">Phone Number:</label>
+          <input type="number" id="phone" name="phone" required>
+    
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+    
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+      </form>
+  </body>
+</html>
