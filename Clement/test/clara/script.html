@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+    <meta charset="utf-8">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </head>
+<body> 
+
+<form> 
+    <label for="name_client">Name:</label>
+    <input type="text" id="name_client" name="name_client" >
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" >
+    <label for="tel">Phone:</label>
+    <input type="text" id="tel" name="tel" >
+    
+</form> 
+
+
+<button id="loadData">Load Data</button>
+
+<script>
+    $(document).ready(function(){
+        $("#loadData").click(function(){
+            $.ajax({
+                type: "POST",
+                url: "load_data.php",
+                data: {param1 : "value1", param2 : "value2"},
+                success: function(data){
+                    console.log(data);
+                    var data = JSON.parse(data);
+                    console.log(data[0].email);
+                    document.getElementById("name_client").value = data[0].name_client;
+                    document.getElementById("email").value = data[0].email;
+                    document.getElementById("tel").value = data[0].tel;
+                }
+            });
+        });
+    });
+</script>
+
+
+
+</body> 
+</html>
