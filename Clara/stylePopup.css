@@ -1,14 +1,3 @@
-.contenu{
-    position: fixed;
-    top: 150px;
-    left: 30%;
-}
-
-.tableau, th, td{
-    border: 2px solid;
-    border-color: gray;
-}
-
 .btnPopup{
     background-color: white;
     cursor: pointer;
@@ -20,7 +9,16 @@
 
 .overlay{
     position:fixed;
-    left: 30%;
+    left:50px;
+    top: 150px;
+    background-color: lightgray;
+    width: 80%;
+    display: none;
+}
+
+.overlay1{
+    position:fixed;
+    left:50px;
     top: 150px;
     background-color: lightgray;
     width: 80%;
