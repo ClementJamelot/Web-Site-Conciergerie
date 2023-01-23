@@ -1,7 +1,7 @@
 <?php
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-$mysqli = new mysqli("localhost", "root", "", "madeth");
+$mysqli = new mysqli("localhost", "root", "root", "madeth");
 
 @$keywords=$_GET["keywords"];
 @$valider=$_GET["valider"];
