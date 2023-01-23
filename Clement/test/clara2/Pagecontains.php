@@ -85,8 +85,8 @@
         <tbody>
 
           <?php
-          mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-          $mysqli = new mysqli("localhost", "root", "root", "madeth");
+          include("Connection.php");
+          $mysqli = connection();
           @$commande=$_GET["commande"];
           $listProduct = $mysqli->query("SELECT * FROM `contains` where id_stock is null and `id_commande`=". $commande." ");
 

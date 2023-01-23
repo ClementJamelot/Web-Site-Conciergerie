@@ -1,20 +1,10 @@
 <?php
-    $host = "localhost";
-    $user = "root";
-    $password = "root";
-    $dbname = "madeth";
-
-    // Create connection
-    $conn = mysqli_connect($host, $user, $password, $dbname);
-
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    include("Connection.php");
+    $mysqli = connection();
 
     $param1 = $_POST["param1"];
 
-    $sql = "SELECT id_client,name_client,email,tel FROM client WHERE id_client='$param1' ";
+    $mysqli->query("SELECT id_client,name_client,email,tel FROM client WHERE id_client='$param1' ");
     $result = mysqli_query($conn, $sql);
 
     $data = array();

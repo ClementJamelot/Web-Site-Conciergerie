@@ -88,8 +88,8 @@
         <tbody>
 
           <?php
-          mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-          $mysqli = new mysqli("localhost", "root", "root", "madeth");
+          include("Connection.php");
+          $mysqli = connection();
 
           $listClient = $mysqli->query("SELECT * FROM client");
 
